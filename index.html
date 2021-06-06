@@ -153,41 +153,60 @@
         </div>
 
         <!-- The Modal -->
-        <div class="modal" id="myModal">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h4 class="modal-title"Thông tin hóa đơn</h4>
-                        <button
-                            type="button"
-                            class="close"
-                            data-dismiss="modal"
-                        >
-                            &times;
-                        </button>
-                    </div>
-
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <td>Số km</td>
-                                    <td>Thời gian chờ</td>
-                                    <td>Loại xe</td>
-                                    <td>Thành tiền</td>
-                                </tr>
-                            </thead>
-                            <tbody id="tbodyHoaDon"></tbody>
-                        </table>
-                    </div>
-
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <!-- <p>Tổng tiền: <span id="inTongTien"></span></p> -->
-                    </div>
+  <div class="modal" id="myModal">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+  
+		<!-- Modal Header -->
+		<div class="modal-header">
+		  <h4 class="modal-title">Thông tin Hóa Đơn</h4>
+		  <button type="button" class="close" data-dismiss="modal">&times;</button>
+		</div>
+  
+		<!-- Modal body -->
+		<div class="modal-body">
+		  <table class="table">
+			  <thead>
+				  <tr>
+					  <td>Chi tiết</td>
+					  <td>Sử dụng</td>
+					  <td>Đơn giá</td>
+					  <td>Thành tiền</td>
+				  </tr>
+				  <tr>
+					  <td>KM đầu tiên</td>
+					  <td id="txtsuDung1"></td>
+					  <td id="txtDonGia1"> </td>
+					  <td id="txtThanhTien1"></td>
+				  </tr>
+				  <tr>
+					  <td>Từ 1 đến 19</td>
+					  <td id="txtsuDung2"></td>
+					  <td id="txtDonGia2"></td>
+					  <td id="txtThanhTien2"></td>
+				  </tr>
+				  <tr>
+					  <td>Từ 19 trở lên</td>
+					  <td id="txtsuDung3"></td>
+					  <td id="txtDonGia3"></td>
+					  <td id="txtThanhTien3"></td>
+				  </tr>
+				  <tr>
+					  <td >Thời gian chờ</td>
+					  <td id="tdTgCho"></td>
+					  <td id="txtDonGia4"></td>
+					  <td id="txtThanhTien4"></td>
+				  </tr>
+			  </thead>
+			  <tbody id="tbodyHoaDon"></tbody>
+		  </table>
+		</div>
+  
+		<!-- Modal footer -->
+		<div class="modal-footer">
+		  <p>Tổng tiền: <span class="tongtien" id="inTongTien"></span> VNĐ</p> 
+		</div>
+        
                 </div>
             </div>
         </div>

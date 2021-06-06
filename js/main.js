@@ -170,60 +170,105 @@ function tinhChiTiet(soKm, tgCho, giaCho, giaKm_1, giaKmTren1, giaKmTren19) {
     }
 }
 
+function hienThi() {
+    var content = "";
+
+    content += '<tr>';
+    content += '<td>Km đầu tiên</td>';
+    content += '<td>1</td>';
+    content += '<td>8000</td>';
+    content += '<td>8000</td>';
+    content += '</tr>';
+
+    document.getElementById("tbodyHoaDon").innerHTML = content;
+}
+
 document.getElementById("btnInHoaDon").onclick = function () {
     var loaiXe = layLoaiXe();
     var soKm = document.getElementById("inputSoKm").value;
     var tgCho = document.getElementById("inputTgCho").value;
 
+    // Đơn Giá
+    var DonGia1 = document.getElementById("txtDonGia1").value;
+    var DonGia2 = document.getElementById("txtDonGia2").value;
+    var DonGia3 = document.getElementById("txtDonGia3").value;
+    var DonGia4 = document.getElementById("txtDonGia4").value;
+
+    // Sử dụng
+    var suDung1 = document.getElementById("txtsuDung1").value;
+    var suDung2 = document.getElementById("txtsuDung2").value;
+    var suDung3 = document.getElementById("txtsuDung3").value;
+
+
+
+    // Đơn giá cho từng loại xe
     switch (loaiXe) {
         case "grabX":
-            tinhChiTiet(soKm, tgCho, GRABX_WAIT, GRABX_1, GRABX_2, GRABX_3);
+            DonGia1 = 8000;
+            DonGia2 = 7500;
+            DonGia3 = 7000;
+            DonGia4 = 2000;
             break;
 
         case "grabSUV":
-            tinhChiTiet(
-                soKm,
-                tgCho,
-                GRABSUV_WAIT,
-                GRABSUV_1,
-                GRABSUV_2,
-                GRABSUV_3
-            );
+            DonGia1 = 9000;
+            DonGia2 = 8500;
+            DonGia3 = 8000;
+            DonGia4 = 3000;
             break;
 
         case "grabBlack":
-            tinhChiTiet(
-                soKm,
-                tgCho,
-                GRABBLACK_WAIT,
-                GRABBLACK_1,
-                GRABBLACK_2,
-                GRABBLACK_3
-            );
+            DonGia1 = 10000;
+            DonGia2 = 9500;
+            DonGia3 = 9000;
+            DonGia4 = 3500;
             break;
 
         default:
             break;
     }
-    
-    var taoTR_tbody = document.createElement("tr");
+    if (0 < soKm && soKm < 1) {
+        suDung1 = soKm;
+        suDung2 = 0;
+        suDung3 = 0;
 
-    //tạo 3 cột
-    var taoTD_soKm = document.createElement("td");
-    taoTD_soKm.innerHTML = soKm;
-    var taoTD_thoiGianCho = document.createElement("td");
-    taoTD_thoiGianCho.innerHTML = tgCho;
-    var taoTD_loaiXe = document.createElement("td");
-    taoTD_loaiXe.innerHTML = loaiXe;
-    var taoTD_thanhTien = document.createElement("td");
-    taoTD_thanhTien.innerHTML = tongTien + "&nbsp; VND";
+    } else if (1 < soKm && soKm < 19) {
+        suDung1 = 1;
+        suDung2 = soKm - 1;
+        suDung3 = 0;
 
-    taoTR_tbody.appendChild(taoTD_soKm);
-    taoTR_tbody.appendChild(taoTD_thoiGianCho);
-    taoTR_tbody.appendChild(taoTD_loaiXe);
-    taoTR_tbody.appendChild(taoTD_thanhTien);
+    } else if (soKm > 19) {
+        suDung1 = 1;
+        suDung2 = 19 - 1;
+        suDung3 = soKm - 19;
+    }
+    //Tính Thành Tiền
+    var thanhTien1 = 0;
+    var thanhTien2 = 0;
+    var thanhTien3 = 0;
+    thanhTien1 = suDung1 * DonGia1;
+    thanhTien2 = suDung2 * DonGia2;
+    thanhTien3 = suDung3 * DonGia3;
 
-    document.getElementById("tbodyHoaDon").appendChild(taoTR_tbody);
-    
-}
 
+
+
+    // In ra Đơn Giá
+    document.getElementById("txtDonGia1").innerHTML = DonGia1;
+    document.getElementById("txtDonGia2").innerHTML = DonGia2;
+    document.getElementById("txtDonGia3").innerHTML = DonGia3;
+    document.getElementById("txtDonGia4").innerHTML = DonGia4;
+    //In ra Sử Dụng
+    document.getElementById("txtsuDung1").innerHTML = suDung1;
+    document.getElementById("txtsuDung2").innerHTML = suDung2;
+    document.getElementById("txtsuDung3").innerHTML = suDung3;
+
+    //In ra Thành Tiền
+    document.getElementById("txtThanhTien1").innerHTML = thanhTien1;
+    document.getElementById("txtThanhTien2").innerHTML = thanhTien2;
+    document.getElementById("txtThanhTien3").innerHTML = thanhTien3;
+    document.getElementById("txtThanhTien4").innerHTML = tienCho;
+
+    document.getElementById("tdTgCho").innerHTML = tgCho;
+    document.getElementById("inTongTien").innerHTML = tongTien;
+};
